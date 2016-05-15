@@ -1,0 +1,28 @@
+{
+  "name": "assignment-1",
+  "version": "1.0.0",
+  "description": "Coursera server side devlopment with NodeJS course",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.13.4",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/pedrofelipemm/Server-side-Development-with-NodeJS.git"
+  },
+  "keywords": [
+    "nodejs"
+  ],
+  "author": "Pedro Felipe Marques Moreira",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/pedrofelipemm/Server-side-Development-with-NodeJS/issues"
+  },
+  "homepage": "https://github.com/pedrofelipemm/Server-side-Development-with-NodeJS#readme"
+}
