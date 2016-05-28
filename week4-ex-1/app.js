@@ -41,6 +41,14 @@ passport.deserializeUser(User.deserializeUser());
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.all('*', function(req, res, next){
+    console.log('req start: ', req.secure, req.hostname, req.url, app.get('port'));
+    if (req.secure) {
+        return next();
+    };
+    res.redirect('https://' + req.hostname + ':' + app.get('secPort') + req.url);
+});
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/dishes', dishRouter);
@@ -48,27 +56,27 @@ app.use('/promotions', promoRouter);
 app.use('/leadership', leaderRouter);
 
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+      next(err);
 });
 
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.json({
-      message: err.message,
-      error: err
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.json({
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.json({
-    message: err.message,
-    error: {}
-  });
+    res.status(err.status || 500);
+    res.json({
+        message: err.message,
+        error: {}
+    });
 });
 
 module.exports = app;
